@@ -18,17 +18,16 @@ RUN apt-get install --yes g++     cmake     libboost-all-dev     libevent-dev   
 
 RUN git clone https://github.com/facebook/proxygen /root/proxygen/
 
-RUN git clone https://github.com/xxyyx/ssl-folly /root/ssl-folly
-RUN chmod +777 /root/ssl-folly/deps.sh
-RUN mv /root/ssl-folly/deps.sh /root/proxygen/proxygen/deps.sh
+RUN git clone https://github.com/xxyyx/folly-json_pointer /root/json_pointer
+RUN chmod +777 /root/json_pointer/deps.sh
+RUN mv /root/json_pointer/deps.sh /root/proxygen/proxygen/deps.sh
 RUN git clone https://github.com/facebook/folly /root/proxygen/proxygen/folly
-RUN mv /root/ssl-folly/FollyConfigChecks.cmake /root/proxygen/proxygen/folly/CMake/FollyConfigChecks.cmake
+RUN mv /root/json_pointer/FollyConfigChecks.cmake /root/proxygen/proxygen/folly/CMake/FollyConfigChecks.cmake
 
-RUN mv /root/ssl-folly/replacements/Subprocess.cpp /root/proxygen/proxygen/folly/folly/Subprocess.cpp
-RUN mv /root/ssl-folly/replacements/json_pointer.cpp /root/proxygen/proxygen/folly/folly/json_pointer.cpp
-RUN mv /root/ssl-folly/replacements/Bser.h /root/proxygen/proxygen/folly/folly/experimental/bser/Bser.h
-RUN mv /root/ssl-folly/replacements/Expected.h /root/proxygen/proxygen/folly/folly/Expected.h
+RUN mv /root/json_pointer/replacements/Subprocess.cpp /root/proxygen/proxygen/folly/folly/Subprocess.cpp
+RUN mv /root/json_pointer/replacements/json_pointer.cpp /root/proxygen/proxygen/folly/folly/json_pointer.cpp
+RUN mv /root/json_pointer/replacements/Bser.h /root/proxygen/proxygen/folly/folly/experimental/bser/Bser.h
+RUN mv /root/json_pointer/replacements/Expected.h /root/proxygen/proxygen/folly/folly/Expected.h
 
 #RUN ./deps.sh
 # RUN ldconfig
-
