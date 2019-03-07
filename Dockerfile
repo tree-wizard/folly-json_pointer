@@ -1,4 +1,4 @@
-# Folly Macaddr Dockerfile
+# Folly Json-pointer Dockerfile
 
 FROM ubuntu:latest
 RUN apt-get update --fix-missing
@@ -22,11 +22,11 @@ RUN git clone https://github.com/facebook/folly /root/proxygen/proxygen/folly
 
 #download and replace files
 RUN git clone https://github.com/xxyyx/folly-json_pointer /root/json_pointer
-RUN chmod +777 /root/json_pointer/deps.sh
+RUN chmod +777 /root/json_pointer/replacements/deps.sh
 
 
 RUN mv /root/json_pointer/replacements/deps.sh /root/proxygen/proxygen/deps.sh
-RUN mv /root/json_pointer/FollyConfigChecks.cmake /root/proxygen/proxygen/folly/CMake/FollyConfigChecks.cmake
+RUN mv /root/json_pointer/replacements/FollyConfigChecks.cmake /root/proxygen/proxygen/folly/CMake/FollyConfigChecks.cmake
 RUN mv /root/json_pointer/replacements/Subprocess.cpp /root/proxygen/proxygen/folly/folly/Subprocess.cpp
 
 RUN mv /root/json_pointer/replacements/json_pointer.cpp /root/proxygen/proxygen/folly/folly/json_pointer.cpp
